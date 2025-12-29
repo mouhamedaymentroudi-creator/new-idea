@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Start 2026 with AYMEN - A personalized commitment experience">
+    <title>Start 2026 with AYMEN</title>
+    
+    <!-- Google Fonts - Distinctive Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- html2canvas for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Canvas Confetti for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Animation Elements -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Page 1: Login/Registration -->
+    <div id="page-login" class="page active">
+        <div class="container">
+            <div class="login-card">
+                <div class="card-header">
+                    <h1 class="brand-title">2026</h1>
+                    <p class="brand-subtitle">Begin Your Journey</p>
+                </div>
+                
+                <form id="login-form" class="form">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            name="firstName" 
+                            class="form-input" 
+                            placeholder="Enter your first name"
+                            required
+                            autocomplete="given-name"
+                        >
+                        <span class="error-message" id="firstName-error"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input 
+                            type="text" 
+                            id="lastName" 
+                            name="lastName" 
+                            class="form-input" 
+                            placeholder="Enter your last name"
+                            required
+                            autocomplete="family-name"
+                        >
+                        <span class="error-message" id="lastName-error"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Continue</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+                
+                <div class="card-footer">
+                    <p>Start your commitment journey with AYMEN</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Gender Selection & Commitment -->
+    <div id="page-selection" class="page">
+        <div class="container">
+            <div class="selection-card">
+                <h2 class="welcome-title">Welcome, <span id="user-name"></span>!</h2>
+                
+                <!-- Gender Selection Section -->
+                <div class="section">
+                    <h3 class="section-title">What is your gender?</h3>
+                    <div class="gender-options">
+                        <label class="gender-option">
+                            <input type="radio" name="gender" value="male" id="gender-male">
+                            <div class="gender-card">
+                                <div class="gender-icon">♂</div>
+                                <span class="gender-label">Male</span>
+                            </div>
+                        </label>
+                        
+                        <label class="gender-option">
+                            <input type="radio" name="gender" value="female" id="gender-female">
+                            <div class="gender-card">
+                                <div class="gender-icon">♀</div>
+                                <span class="gender-label">Female</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Commitment Question Section -->
+                <div class="section" id="commitment-section" style="display: none;">
+                    <h3 class="section-title commitment-question">
+                        Would you like to start 2026 with AYMEN?
+                    </h3>
+                    <div class="commitment-options">
+                        <button class="btn btn-yes" id="btn-yes">
+                            <span>Yes, I'm Ready!</span>
+                            <span class="sparkle">✨</span>
+                        </button>
+                        <button class="btn btn-no" id="btn-no">
+                            <span>Not Yet</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Reconsider Message (shown when user clicks No) -->
+                    <div class="reconsider-message" id="reconsider-message" style="display: none;">
+                        <div class="reconsider-content">
+                            <p class="reconsider-text">
+                                Are you sure? This could be the beginning of something amazing! 
+                                Take a moment to reconsider...
+                            </p>
+                            <button class="btn btn-reconsider" id="btn-reconsider">
+                                I've Changed My Mind!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Certificate Generation -->
+    <div id="page-certificate" class="page">
+        <div class="container">
+            <div class="certificate-wrapper">
+                <h2 class="certificate-header">Your Commitment Certificate</h2>
+                
+                <!-- Certificate Display -->
+                <div id="certificate" class="certificate">
+                    <div class="certificate-border">
+                        <div class="certificate-inner">
+                            <!-- Decorative Elements -->
+                            <div class="certificate-decoration top-left">
+                                <div class="deco-corner"></div>
+                            </div>
+                            <div class="certificate-decoration top-right">
+                                <div class="deco-corner"></div>
+                            </div>
+                            <div class="certificate-decoration bottom-left">
+                                <div class="deco-corner"></div>
+                            </div>
+                            <div class="certificate-decoration bottom-right">
+                                <div class="deco-corner"></div>
+                            </div>
+                            
+                            <!-- Certificate Content -->
+                            <div class="certificate-content">
+                                <div class="certificate-header-text">Certificate of Commitment</div>
+                                
+                                <div class="certificate-divider">
+                                    <span class="star">★</span>
+                                    <span class="line"></span>
+                                    <span class="star">★</span>
+                                    <span class="line"></span>
+                                    <span class="star">★</span>
+                                </div>
+                                
+                                <p class="certificate-intro">This certifies that</p>
+                                
+                                <h1 class="certificate-name" id="certificate-name"></h1>
+                                
+                                <p class="certificate-commitment">
+                                    commits to starting 2026 with AYMEN
+                                </p>
+                                
+                                <div class="certificate-seal">
+                                    <div class="seal-circle">
+                                        <div class="seal-inner">2026</div>
+                                    </div>
+                                </div>
+                                
+                                <p class="certificate-date" id="certificate-date"></p>
+                                
+                                <div class="certificate-signature">
+                                    <div class="signature-line"></div>
+                                    <p class="signature-label">Signature</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="certificate-actions">
+                    <button class="btn btn-download" id="btn-download">
+                        <span>📥 Download Certificate</span>
+                    </button>
+                    <button class="btn btn-share" id="btn-share">
+                        <span>🔗 Share</span>
+                    </button>
+                    <button class="btn btn-restart" id="btn-restart">
+                        <span>↻ Start Over</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loader"></div>
+        <p class="loading-text">Creating your certificate...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
